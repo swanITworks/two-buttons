@@ -19,7 +19,6 @@ const reducerFunction = (state, action) => {
         isModalOpen: true,
       }
     case "CLOSE_MODAL":
-      console.log("close modal!")
       return {
         ...state,
         isModalOpen: false,

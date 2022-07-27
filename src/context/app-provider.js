@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useCallback, useReducer } from "react"
 import AppContext from "./app-context"
 
 const initialState = {
@@ -31,17 +31,17 @@ const reducerFunction = (state, action) => {
 export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunction, initialState)
 
-  const openModalHandler = () => {
+  const openModalHandler = useCallback(() => {
     dispatch({ type: "OPEN_MODAL" })
-  }
+  }, [])
 
-  const closeModalHandler = () => {
+  const closeModalHandler = useCallback(() => {
     dispatch({ type: "CLOSE_MODAL" })
-  }
+  }, [])
 
-  const toggleDisableButtonHandler = () => {
+  const toggleDisableButtonHandler = useCallback(() => {
     dispatch({ type: "TOGGLE_ON_OFF_BUTTON" })
-  }
+  }, [])
 
   const appStateCtx = {
     appState: state,

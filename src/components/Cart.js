@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import React, { useContext } from "react"
+import React, { useCallback, useContext } from "react"
 import { Button, Close } from "theme-ui"
 import AppContext from "../context/app-context"
 
@@ -8,14 +8,14 @@ const Cart = () => {
 
   const { isRightButtonDisabled } = appState
 
-  const onClickYesButtonHandler = () => {
+  const onClickYesButtonHandler = useCallback(() => {
     closeModal()
     toggleButton()
-  }
+  }, [])
 
-  const onClickNoButtonHandler = () => {
+  const onClickNoButtonHandler = useCallback(() => {
     closeModal()
-  }
+  }, [])
 
   return (
     <div sx={{ p: 5 }}>
